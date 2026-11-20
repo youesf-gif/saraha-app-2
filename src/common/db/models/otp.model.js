@@ -1,0 +1,19 @@
+import { model, Schema } from "mongoose";
+
+const schema = new Schema({
+    code: {
+        type: String,
+        required: true,
+    },
+    userId: {
+        type: Schema.Types.ObjectId,
+        ref: "User",
+        required: true,
+    },
+    expiresAt: {
+        type: Date,
+        index: { expires: 0 },
+    },
+});
+
+export const OTP = model("OTP", schema);
